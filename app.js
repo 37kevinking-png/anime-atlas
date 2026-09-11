@@ -1640,7 +1640,7 @@
       ctx.textAlign = "left";
       ctx.fillStyle = "rgba(255,255,255,.66)";
       ctx.font = '600 16px "Microsoft YaHei", sans-serif';
-      ctx.fillText("扫码进入番迹", 164, height - 72);
+      ctx.fillText("扫码进入", 164, height - 72);
       ctx.restore();
     }
   }
