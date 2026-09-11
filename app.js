@@ -311,6 +311,9 @@
   let pendingClearAction = null;
   let annualDraggedId = null;
   let annualTouchDrag = null;
+  let themeDraggedId = null;
+  let themeTouchDrag = null;
+  let themeSuppressClick = false;
   const shareImageCache = new Map();
 
   function dedupeCatalog(items) {
@@ -420,7 +423,7 @@
     const byId = new Map(stored
       .filter((list) => list?.id && !list.deleted)
       .map((list) => [list.id, list]));
-    const lists = DEFAULT_THEME_LISTS
+    let lists = DEFAULT_THEME_LISTS
       .filter((preset) => !deletedThemeIds.has(preset.id))
       .map((preset) => {
       const saved = byId.get(preset.id) || {};
@@ -446,6 +449,23 @@
         maxItems: 1,
         records: normalizeRecords(list.records),
       }));
+    const orderedMain = [];
+    const orderedIds = new Set();
+    const listsById = new Map(lists.map((list) => [list.id, list]));
+    stored
+      .filter((list) => list?.id && !list.deleted)
+      .forEach((saved) => {
+        const id = String(saved.id);
+        const list = listsById.get(id);
+        if (!list || list.annual || orderedIds.has(id)) return;
+        orderedIds.add(id);
+        orderedMain.push(list);
+      });
+    lists = [
+      ...orderedMain,
+      ...lists.filter((list) => !list.annual && !orderedIds.has(list.id)),
+      ...lists.filter((list) => list.annual),
+    ];
     const recommended = lists.find((list) => list.id === "recommend");
     const worst = lists.find((list) => list.id === "worst");
     selected.forEach((item) => {
@@ -1232,6 +1252,18 @@
     elements.themeEmptyHint.hidden = entries.length > 0;
     renderThemeSearchResults(list);
     renderThemeGallery(list, entries);
+  }
+
+  function moveThemeList(draggedId, targetId) {
+    if (!draggedId || !targetId || draggedId === targetId) return false;
+    const fromIndex = themeLists.findIndex((list) => !list.annual && list.id === draggedId);
+    const toIndex = themeLists.findIndex((list) => !list.annual && list.id === targetId);
+    if (fromIndex < 0 || toIndex < 0) return false;
+    [themeLists[fromIndex], themeLists[toIndex]] = [themeLists[toIndex], themeLists[fromIndex]];
+    saveThemeLists();
+    renderThemes();
+    showToast("主题顺序已保存");
+    return true;
   }
 
   function moveAnnualRecord(draggedId, targetId) {
@@ -3007,6 +3039,109 @@
     showToast(`已移除《${item.title}》`);
   }
 
+  function themeDropTargetAt(clientX, clientY) {
+    const target = document.elementsFromPoint(clientX, clientY)
+      .map((element) => element.closest("[data-theme-id]"))
+      .find(Boolean);
+    elements.themeMatrix.querySelectorAll(".is-drop-target").forEach((card) => card.classList.remove("is-drop-target"));
+    if (target && target.dataset.themeId !== themeDraggedId) target.classList.add("is-drop-target");
+    return target || null;
+  }
+
+  function clearThemeDragStyles() {
+    elements.themeMatrix.querySelectorAll(".is-dragging, .is-drop-target").forEach((card) => {
+      card.classList.remove("is-dragging", "is-drop-target");
+    });
+    document.querySelector(".theme-drag-ghost")?.remove();
+    document.body.classList.remove("theme-drag-active");
+    themeDraggedId = null;
+    if (themeTouchDrag?.timer) window.clearTimeout(themeTouchDrag.timer);
+    themeTouchDrag = null;
+  }
+
+  function attachThemeReorderEvents() {
+    elements.themeMatrix.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || event.target.closest("button, a")) return;
+      const card = event.target.closest("[data-theme-id]");
+      if (!card) return;
+      const drag = {
+        id: card.dataset.themeId,
+        card,
+        pointerId: event.pointerId,
+        pointerType: event.pointerType,
+        startX: event.clientX,
+        startY: event.clientY,
+        clientX: event.clientX,
+        clientY: event.clientY,
+        active: false,
+        ghost: null,
+        timer: null,
+        activate: null,
+      };
+      drag.activate = () => {
+        if (themeTouchDrag !== drag) return;
+        drag.active = true;
+        themeDraggedId = drag.id;
+        drag.card.classList.add("is-dragging");
+        document.body.classList.add("theme-drag-active");
+        const rect = drag.card.getBoundingClientRect();
+        const ghost = drag.card.cloneNode(true);
+        ghost.className = "theme-matrix-card theme-single-card theme-drag-ghost";
+        ghost.removeAttribute("tabindex");
+        ghost.setAttribute("aria-hidden", "true");
+        ghost.style.width = `${rect.width}px`;
+        ghost.style.height = `${rect.height}px`;
+        ghost.style.left = `${drag.clientX + 12}px`;
+        ghost.style.top = `${drag.clientY + 12}px`;
+        document.body.append(ghost);
+        drag.ghost = ghost;
+        if (["touch", "pen"].includes(drag.pointerType)) navigator.vibrate?.(24);
+      };
+      if (["touch", "pen"].includes(event.pointerType)) drag.timer = window.setTimeout(drag.activate, 460);
+      themeTouchDrag = drag;
+      try { card.setPointerCapture(event.pointerId); } catch {}
+    });
+    elements.themeMatrix.addEventListener("pointermove", (event) => {
+      const drag = themeTouchDrag;
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      drag.clientX = event.clientX;
+      drag.clientY = event.clientY;
+      if (!drag.active) {
+        const distance = Math.hypot(event.clientX - drag.startX, event.clientY - drag.startY);
+        if (["touch", "pen"].includes(drag.pointerType)) {
+          if (distance > 9) clearThemeDragStyles();
+          return;
+        }
+        if (distance <= 4) return;
+        drag.activate();
+        if (!drag.active) return;
+      }
+      event.preventDefault();
+      drag.ghost.style.left = `${event.clientX + 12}px`;
+      drag.ghost.style.top = `${event.clientY + 12}px`;
+      themeDropTargetAt(event.clientX, event.clientY);
+    }, { passive: false });
+    const finishThemeDrag = (event) => {
+      const drag = themeTouchDrag;
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      const target = drag.active ? themeDropTargetAt(event.clientX, event.clientY) : null;
+      const draggedId = drag.id;
+      const targetId = target?.dataset.themeId;
+      const active = drag.active;
+      clearThemeDragStyles();
+      if (active && targetId && targetId !== draggedId) {
+        themeSuppressClick = true;
+        moveThemeList(draggedId, targetId);
+        window.setTimeout(() => { themeSuppressClick = false; }, 0);
+      }
+    };
+    elements.themeMatrix.addEventListener("pointerup", finishThemeDrag);
+    elements.themeMatrix.addEventListener("pointercancel", clearThemeDragStyles);
+    elements.themeMatrix.addEventListener("contextmenu", (event) => {
+      if (themeTouchDrag?.active) event.preventDefault();
+    });
+  }
+
   function annualDropTargetAt(clientX, clientY) {
     const target = document.elementFromPoint(clientX, clientY)?.closest("[data-annual-record-id]");
     elements.annualSelectedGrid.querySelectorAll(".is-drop-target").forEach((card) => card.classList.remove("is-drop-target"));
@@ -3095,6 +3230,7 @@
 
   function attachEvents() {
     attachAnnualReorderEvents();
+    attachThemeReorderEvents();
     document.querySelectorAll("[data-start-path]").forEach((button) => button.addEventListener("click", () => {
       showView(button.dataset.startPath);
     }));
@@ -3422,6 +3558,12 @@
     });
 
     elements.themeMatrix.addEventListener("click", (event) => {
+      if (themeSuppressClick) {
+        event.preventDefault();
+        event.stopPropagation();
+        themeSuppressClick = false;
+        return;
+      }
       const deleteButton = event.target.closest("[data-theme-delete]");
       if (deleteButton) {
         event.preventDefault();

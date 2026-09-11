@@ -1089,16 +1089,17 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
 
 .score-badge > span {
   position: absolute;
-  top: 5px;
-  left: 22px;
+  top: 33%;
+  left: 67%;
   color: #fff4cb;
   font-size: 13px;
   font-weight: 900;
   letter-spacing: .01em;
   line-height: 1;
   white-space: nowrap;
-  transform: rotate(45deg);
-  transform-origin: left top;
+  text-align: center;
+  transform: translate(-50%, -50%) rotate(45deg);
+  transform-origin: center;
 }
 
 .poster-info {
@@ -5080,6 +5081,39 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
   transform: translateY(-6px) rotate(var(--theme-hover-tilt));
 }
 
+.theme-single-card {
+  touch-action: pan-y;
+}
+
+.theme-single-card.is-dragging {
+  opacity: .32;
+  transform: none !important;
+}
+
+.theme-single-card.is-drop-target {
+  border-color: var(--group-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--group-accent) 28%, transparent), 0 18px 30px rgb(5 3 7 / 22%);
+  transform: translateY(-5px) !important;
+}
+
+.theme-drag-ghost {
+  position: fixed;
+  z-index: 500;
+  margin: 0 !important;
+  opacity: .9;
+  pointer-events: none;
+  transform: rotate(2deg) scale(.96) !important;
+  box-shadow: 0 24px 50px rgb(5 3 7 / 38%);
+}
+
+.theme-drag-ghost .theme-delete-button {
+  visibility: hidden;
+}
+
+body.theme-drag-active {
+  user-select: none;
+}
+
 .theme-single-poster {
   position: relative;
   z-index: 1;
@@ -5230,8 +5264,8 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
   }
 
   .score-badge > span {
-    top: 4px;
-    left: 17px;
+    top: 33%;
+    left: 67%;
     font-size: 12px;
   }
 }
@@ -5257,6 +5291,8 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
 }
 
 #exportAnnualImage {
+  align-self: center;
+  height: 40px;
   min-height: 40px;
   padding: 8px 11px;
   font-size: 14px;

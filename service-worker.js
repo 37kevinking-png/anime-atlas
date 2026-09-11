@@ -1,4 +1,4 @@
-const CACHE_NAME = "anime-atlas-v40";
+const CACHE_NAME = "anime-atlas-v43";
 const APP_SHELL = [
   "./",
   "./index.html",
