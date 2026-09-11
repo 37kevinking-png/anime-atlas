@@ -7,6 +7,7 @@
   const SWIPE_SKIPPED_STORAGE_KEY = "anime-atlas:swipe-skipped:v1";
   const SWIPE_FILTERS_STORAGE_KEY = "anime-atlas:swipe-filters:v1";
   const currentYear = Math.min(2030, new Date().getFullYear());
+  let deletedThemeIds = new Set();
   const SWIPE_VOTE_PRESETS = new Set([30, 100, 500, 1000]);
   const SWIPE_DEFAULT_FILTERS = Object.freeze({
     startYear: 1917,
@@ -413,8 +414,15 @@
           bucketYear: Number(record.bucketYear) || null,
           addedAt: record.addedAt || null,
         }));
-    const byId = new Map(stored.map((list) => [list.id, list]));
-    const lists = DEFAULT_THEME_LISTS.map((preset) => {
+    deletedThemeIds = new Set(stored
+      .filter((list) => list?.deleted && list.id)
+      .map((list) => String(list.id)));
+    const byId = new Map(stored
+      .filter((list) => list?.id && !list.deleted)
+      .map((list) => [list.id, list]));
+    const lists = DEFAULT_THEME_LISTS
+      .filter((preset) => !deletedThemeIds.has(preset.id))
+      .map((preset) => {
       const saved = byId.get(preset.id) || {};
       return {
         ...preset,
@@ -424,7 +432,7 @@
       };
     });
     stored
-      .filter((list) => list?.custom && list.id && !DEFAULT_THEME_LISTS.some((preset) => preset.id === list.id))
+      .filter((list) => list?.custom && !list.deleted && list.id && !deletedThemeIds.has(String(list.id)) && !DEFAULT_THEME_LISTS.some((preset) => preset.id === list.id))
       .forEach((list) => lists.push({
         id: String(list.id),
         group: "自定义",
@@ -450,17 +458,21 @@
 
   function saveThemeLists() {
     try {
-      localStorage.setItem(THEME_LIST_STORAGE_KEY, JSON.stringify(themeLists.map((list) => ({
-        id: list.id,
-        syncCareer: list.syncCareer,
-        records: list.records,
-        ...(list.custom ? {
-          custom: true,
-          title: list.title,
-          icon: list.icon,
-          description: list.description,
-        } : {}),
-      }))));
+      const payload = [
+        ...Array.from(deletedThemeIds, (id) => ({ id, deleted: true })),
+        ...themeLists.map((list) => ({
+          id: list.id,
+          syncCareer: list.syncCareer,
+          records: list.records,
+          ...(list.custom ? {
+            custom: true,
+            title: list.title,
+            icon: list.icon,
+            description: list.description,
+          } : {}),
+        })),
+      ];
+      localStorage.setItem(THEME_LIST_STORAGE_KEY, JSON.stringify(payload));
     } catch (error) {
       showToast("浏览器存储空间不足，请先导出备份", "error");
     }
@@ -1123,6 +1135,23 @@
     if (scroll) elements.themeWorkbench.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function deleteThemeList(id) {
+    const list = themeLists.find((candidate) => !candidate.annual && candidate.id === id);
+    if (!list) return;
+    if (mainThemeLists().length <= 1) {
+      showToast("至少保留一个主题", "error");
+      return;
+    }
+    if (!window.confirm(`删除主题“${list.title}”？该主题中的作品也会被移除。`)) return;
+    const index = themeLists.indexOf(list);
+    themeLists.splice(index, 1);
+    deletedThemeIds.add(list.id);
+    if (state.activeThemeId === list.id) state.activeThemeId = mainThemeLists()[0]?.id || "";
+    saveThemeLists();
+    renderThemes();
+    showToast("主题已删除");
+  }
+
   function addCustomTheme(event) {
     event.preventDefault();
     if (!elements.customThemeForm.reportValidity()) return;
@@ -1167,21 +1196,21 @@
     elements.themeMatrix.innerHTML = `<div class="theme-flat-grid">${listsForMatrix.map((list, listIndex) => {
       const item = list.records.map((record) => catalogById.get(record.id)).find(Boolean);
       const poster = safeUrl(item?.poster);
-      return `<button
-        type="button"
+      return `<article
         role="tab"
         class="theme-matrix-card theme-single-card${list.id === activeList.id ? " is-active" : ""}${list.custom ? " is-custom" : ""}"
         data-theme-id="${escapeHtml(list.id)}"
         aria-selected="${list.id === activeList.id}"
+        tabindex="0"
         style="--theme-index:${listIndex}"
       >
-        <span class="theme-matrix-card-top"><i>${escapeHtml(list.icon)}</i><b>${escapeHtml(list.title)}</b><em>${item ? "1" : "0"}</em></span>
+        <span class="theme-matrix-card-top"><i>${escapeHtml(list.icon)}</i><b>${escapeHtml(list.title)}</b><button class="theme-delete-button" type="button" data-theme-delete="${escapeHtml(list.id)}" aria-label="删除主题${escapeHtml(list.title)}">×</button></span>
         <span class="theme-single-poster${poster ? "" : " is-empty"}">
           ${poster ? `<img src="${escapeHtml(poster)}" alt="${escapeHtml(item.title)}海报" loading="lazy" referrerpolicy="no-referrer" />` : `<i>＋</i>`}
         </span>
         ${item ? `<strong class="theme-single-title">${escapeHtml(item.title)}</strong>` : ""}
         ${list.custom && list.description ? `<small>${escapeHtml(list.description)}</small>` : ""}
-      </button>`;
+      </article>`;
     }).join("")}</div>`;
     elements.themeMatrix.querySelectorAll("img").forEach((image) => image.addEventListener("error", () => {
       image.closest(".theme-single-poster")?.classList.add("is-empty");
@@ -1215,8 +1244,7 @@
     const fromIndex = ordered.findIndex((record) => record.id === draggedId);
     const toIndex = ordered.findIndex((record) => record.id === targetId);
     if (fromIndex < 0 || toIndex < 0) return false;
-    const [moved] = ordered.splice(fromIndex, 1);
-    ordered.splice(toIndex, 0, moved);
+    [ordered[fromIndex], ordered[toIndex]] = [ordered[toIndex], ordered[fromIndex]];
     yearIndexes.forEach(({ index }, orderIndex) => { list.records[index] = ordered[orderIndex]; });
     saveThemeLists();
     renderAnnualView();
@@ -2453,7 +2481,7 @@
           <g class="chart-year-dots">${yearDots}</g>
         </svg>`
       : `<div class="year-chart-empty"><strong>这些记录暂时没有年份</strong><span>补齐日期后会自动生成生涯曲线</span></div>`;
-    const recommendList = themeLists.find((list) => list.id === "recommend");
+    const recommendList = themeLists.find((list) => list.id === "recommend") || { records: [] };
     const recommended = recommendList.records.map((record) => catalogById.get(record.id)).filter(Boolean);
     const recommendedTopTags = recommended.length > 10
       ? rankedCollectionTags(recommended).slice(0, 10)
@@ -3394,8 +3422,22 @@
     });
 
     elements.themeMatrix.addEventListener("click", (event) => {
+      const deleteButton = event.target.closest("[data-theme-delete]");
+      if (deleteButton) {
+        event.preventDefault();
+        event.stopPropagation();
+        deleteThemeList(deleteButton.dataset.themeDelete);
+        return;
+      }
       const card = event.target.closest("[data-theme-id]");
       if (!card) return;
+      selectTheme(card.dataset.themeId, true);
+    });
+    elements.themeMatrix.addEventListener("keydown", (event) => {
+      if (!["Enter", " "].includes(event.key) || event.target.closest("[data-theme-delete]")) return;
+      const card = event.target.closest("[data-theme-id]");
+      if (!card) return;
+      event.preventDefault();
       selectTheme(card.dataset.themeId, true);
     });
     elements.openCustomTheme.addEventListener("click", () => {

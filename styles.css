@@ -3456,7 +3456,8 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
 .theme-matrix-card-top { position: relative; z-index: 2; display: grid; min-width: 0; grid-template-columns: auto 1fr auto; align-items: center; gap: 7px; }
 .theme-matrix-card-top i { font-style: normal; font-size: 22px; }
 .theme-matrix-card-top b { overflow: hidden; font: 800 15px/1.2 "Microsoft YaHei UI", sans-serif; text-overflow: ellipsis; white-space: nowrap; }
-.theme-matrix-card-top em { display: grid; min-width: 25px; height: 25px; padding: 0 5px; place-items: center; border-radius: 999px; color: white; background: #252129; font-size: 10px; font-style: normal; }
+.theme-delete-button { position: relative; z-index: 4; display: grid; min-width: 25px; height: 25px; padding: 0; place-items: center; border: 0; border-radius: 999px; color: white; background: #252129; cursor: pointer; font: 800 17px/1 Arial, sans-serif; transition: background 160ms ease, transform 160ms ease; }
+.theme-delete-button:hover,.theme-delete-button:focus-visible { color: white; background: #d9524c; outline: none; transform: rotate(90deg) scale(1.06); }
 .theme-matrix-posters { position: relative; z-index: 1; display: block; height: 155px; margin: 0 4px; }
 .theme-matrix-poster { position: absolute; top: 7px; left: calc(50% - 48px + (var(--poster-index) - 1.5) * 17px); display: grid; width: 88px; aspect-ratio: 2 / 3; overflow: hidden; place-items: center; border: 4px solid white; border-radius: 8px; color: white; background: linear-gradient(145deg, var(--group-accent), #28222b); box-shadow: 0 9px 18px rgb(25 18 27 / 24%); transform: rotate(calc((var(--poster-index) - 1.5) * 3.4deg)); }
 .theme-matrix-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -5252,12 +5253,12 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
 }
 
 .annual-page-actions > button {
-  min-width: 142px;
+  min-width: 132px;
 }
 
 #exportAnnualImage {
   min-height: 40px;
-  padding-inline: 13px;
+  padding: 8px 11px;
   font-size: 14px;
 }
 
@@ -5332,9 +5333,9 @@ body.mobile-nav-open .menu-icon i:nth-child(3) {
   #exportAnnualImage {
     width: auto;
     align-self: flex-start;
-    min-width: 142px;
-    min-height: 42px;
-    font-size: 15px;
+    min-width: 132px;
+    min-height: 38px;
+    font-size: 14px;
   }
 
   .annual-selected-grid,
@@ -5738,11 +5739,11 @@ body.annual-drag-active {
     white-space: nowrap;
   }
 
-  .theme-single-card .theme-matrix-card-top em {
+  .theme-single-card .theme-delete-button {
     min-width: 19px;
     height: 19px;
     padding: 0 3px;
-    font-size: 8px;
+    font-size: 13px;
   }
 
   .theme-single-poster {
