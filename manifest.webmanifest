@@ -1,0 +1,17 @@
+{
+  "name": "番迹 · 我的动画生涯表",
+  "short_name": "番迹",
+  "description": "按年代、年份和季度整理看过的日本动画。",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f0e7",
+  "theme_color": "#17161b",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

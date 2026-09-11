@@ -1,0 +1,33 @@
+{
+  "input_confirmed_rows": 819,
+  "input_confirmed_unique_subjects": 818,
+  "input_manual_title_review": 184,
+  "auto_confirmed_by_japanese_title": 78,
+  "remaining_manual_title_review": 106,
+  "japanese_bangumi_catalog": 4382,
+  "japanese_inferred_by_kana_title": 2872,
+  "excluded_known_non_japanese": 1212,
+  "remaining_manual_country_review": 1921,
+  "audited_unique_subjects": 4456,
+  "type_counts": {
+    "movie": 1756,
+    "ova": 2100,
+    "theatrical": 600
+  },
+  "theatrical_status_counts": {
+    "confirmed": 2431,
+    "not_listed": 2023,
+    "probable": 2
+  },
+  "runtime_present": 2091,
+  "runtime_missing": 2365,
+  "other_country_or_region_release_record": 10,
+  "ova_with_theatrical_record": 77,
+  "ova_release_only_and_up_to_60_minutes": 193,
+  "manual_format_review": 0,
+  "policy": {
+    "ova": "Bangumi platform OVA; <=60 minutes + release date + no theatrical date is strong supporting evidence.",
+    "theatrical_evidence": "上映年度 or 其他上映年度 in Bangumi infobox.",
+    "japanese_title_auto_match": "Conservative title similarity plus uniqueness/release-date checks."
+  }
+}

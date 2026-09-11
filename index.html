@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#151419" />
+    <meta
+      name="description"
+      content="按年代与类型整理看过的日本动画和国产动画，建立属于自己的动画生涯表与主题清单。"
+    />
+    <title>番迹 · 我的动画生涯表</title>
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="swipe-mode-active">
+    <a class="skip-link" href="#mainContent">跳到主要内容</a>
+
+    <header class="site-header">
+      <a class="brand" id="homeBrand" href="#" aria-label="返回刷刷刷首页">
+        <span class="brand-mark" aria-hidden="true">番</span>
+        <span class="brand-copy">
+          <span class="brand-title-row"><strong>番迹</strong></span>
+          <small>ANIME ATLAS</small>
+        </span>
+      </a>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="主要页面">
+        <button class="nav-button is-active" type="button" data-view="swipe" aria-current="page">
+          刷刷刷
+        </button>
+        <button class="nav-button" type="button" data-view="collection">
+          我的生涯表
+        </button>
+        <button class="nav-button" type="button" data-view="themes">
+          喜好图鉴
+        </button>
+        <button class="nav-button" type="button" data-view="annual">
+          年度十佳
+        </button>
+        <button class="nav-button" type="button" data-view="browse">
+          动画库
+        </button>
+      </nav>
+
+      <button class="collection-pill" id="openSelection" type="button" aria-label="打开功能菜单" aria-controls="primaryNav" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span id="headerSelectedCount" hidden>0</span>
+      </button>
+    </header>
+
+    <main id="mainContent">
+      <span id="catalogCount" hidden>0</span>
+      <span id="selectedCount" hidden>0</span>
+      <span id="catalogTypeStats" hidden></span>
+      <span id="selectedTypeStats" hidden></span>
+
+      <section class="origin-switch-shell" id="originSwitchShell" aria-labelledby="originSwitchTitle">
+        <div>
+          <p class="eyebrow">ANIME LIBRARY</p>
+          <h2 id="originSwitchTitle">选择动画资料库</h2>
+        </div>
+        <div class="origin-switch" id="originSwitch" role="tablist" aria-label="动画资料库">
+          <button type="button" class="is-active" data-origin="jp" role="tab" aria-selected="true">
+            <span>日番</span><strong id="japaneseCatalogCount">0</strong>
+          </button>
+          <button type="button" data-origin="cn" role="tab" aria-selected="false">
+            <span>国产</span><strong id="chineseCatalogCount">0</strong>
+          </button>
+        </div>
+      </section>
+
+      <section class="timeline-shell" aria-labelledby="timelineTitle">
+        <div class="section-heading timeline-heading">
+          <div>
+            <p class="eyebrow">TIME INDEX</p>
+            <h2 id="timelineTitle">选择年代</h2>
+          </div>
+          <div class="timeline-actions">
+            <label class="timeline-jump"><span>直达年份</span><input id="timelineYearInput" type="number" min="1917" max="2030" inputmode="numeric" placeholder="如 2006" /><button id="timelineYearJump" type="button">前往</button></label>
+            <button class="icon-button" id="timelinePrev" type="button" aria-label="向前查看年代">←</button>
+            <button class="icon-button" id="timelineNext" type="button" aria-label="向后查看年代">→</button>
+          </div>
+        </div>
+        <div class="timeline" id="timeline" role="list" aria-label="年代和年份索引"></div>
+      </section>
+
+      <section class="view-panel" id="browseView" aria-labelledby="browseTitle" hidden>
+        <div class="catalog-header">
+          <div>
+            <p class="eyebrow" id="activePeriodKind">YEAR ARCHIVE</p>
+            <h2 id="browseTitle"><span id="activePeriodLabel">2023年</span>动画</h2>
+            <p id="browseSummary" class="muted-text"></p>
+          </div>
+          <button class="secondary-button" id="openManualAdd" type="button">
+            ＋ 手动添加
+          </button>
+        </div>
+
+        <div class="filter-panel">
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">⌕</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="搜索全部年代的中文名、原名或制作公司"
+              autocomplete="off"
+            />
+            <kbd>Ctrl K</kbd>
+          </label>
+
+          <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button" aria-expanded="false">
+            <span>筛选与排序</span><strong>展开</strong>
+          </button>
+
+          <div class="filter-row">
+            <div class="filter-group catalog-mode-group" id="catalogModeGroup">
+              <span class="filter-label">呈现方式</span>
+              <div class="segmented" id="catalogModeFilters" aria-label="资料呈现方式">
+                <button type="button" class="segment-button is-active" data-catalog-mode="poster" aria-pressed="true">海报＋信息</button>
+                <button type="button" class="segment-button" data-catalog-mode="monthly" aria-pressed="false">月份表格</button>
+              </div>
+            </div>
+            <div class="filter-group" id="typeFilterGroup">
+              <span class="filter-label">类型</span>
+              <div class="segmented" id="typeFilters" aria-label="动画类型筛选"></div>
+            </div>
+            <label class="sort-select">
+              <span class="filter-label">排序依据</span>
+              <select id="sortSelect">
+                <option value="votes" selected>评分人数</option>
+                <option value="score">bangumi评分</option>
+                <option value="date">上映时间</option>
+                <option value="title">作品名称</option>
+              </select>
+            </label>
+            <label class="sort-select sort-direction-select">
+              <span class="filter-label">顺序</span>
+              <select id="sortDirection">
+                <option value="desc" selected>倒序</option>
+                <option value="asc">正序</option>
+              </select>
+            </label>
+          </div>
+          <div class="tv-season-row" id="tvSeasonRow" hidden>
+            <span class="filter-label">TV动画季度</span>
+            <div class="segmented" id="seasonFilters" aria-label="TV动画季度筛选"></div>
+          </div>
+        </div>
+
+        <div class="catalog-meta">
+          <p>找到 <strong id="resultCount">0</strong> 部作品 <span id="foldedCount"></span></p>
+          <div class="catalog-meta-actions">
+            <label class="low-vote-switch">
+              <input id="lowVoteToggle" type="checkbox" checked />
+              <span>折叠少于10人评分</span>
+            </label>
+            <label class="low-vote-switch">
+              <input id="compilationToggle" type="checkbox" checked />
+              <span>折叠总集篇作品</span>
+            </label>
+            <button class="text-button" id="clearFilters" type="button">清除筛选</button>
+          </div>
+        </div>
+
+        <div class="poster-grid" id="posterGrid" aria-live="polite"></div>
+        <div class="monthly-catalog" id="monthlyCatalog" hidden aria-live="polite"></div>
+        <button class="secondary-button catalog-load-more" id="catalogLoadMore" type="button" hidden>继续加载</button>
+        <div class="empty-state" id="catalogEmpty" hidden>
+          <span class="empty-mark" aria-hidden="true">空</span>
+          <h3>这里暂时还没有作品</h3>
+          <p>可以换一个年代或筛选条件，也可以先手动添加一部动画。</p>
+          <button class="secondary-button" type="button" data-action="manual-add">手动添加作品</button>
+        </div>
+      </section>
+
+      <section class="view-panel swipe-view" id="swipeView" aria-label="刷刷刷">
+        <section class="swipe-panel" id="swipePanel" aria-label="刷刷刷动画录入">
+          <header class="swipe-panel-header">
+            <p class="eyebrow">SWIPE YOUR ANIME MEMORY</p>
+          </header>
+          <div class="swipe-stage" id="swipeStage">
+            <div class="swipe-deck" id="swipeDeck" aria-live="polite"></div>
+          </div>
+          <div class="swipe-actions" aria-label="刷番判断按钮">
+            <button type="button" data-swipe-action="watched"><span>←</span><b>看过</b></button>
+            <button type="button" data-swipe-action="recommend"><span>↑</span><b>推荐</b></button>
+            <button type="button" data-swipe-action="worst"><span>↓</span><b>不推荐</b></button>
+            <button type="button" data-swipe-action="unseen"><span>→</span><b>没看过</b></button>
+          </div>
+          <footer class="swipe-panel-footer"><button class="swipe-undo-button" id="undoSwipeDecision" type="button" disabled>↶ 撤回上一步</button><button class="text-button" id="resetSwipeSkipped" type="button">重置“没看过”</button></footer>
+
+          <details class="swipe-filter-panel" id="swipeFilterPanel" open>
+            <summary><div><p class="eyebrow">FILTER THE DECK</p><h3 id="swipeFilterTitle">筛选</h3></div><p id="swipeFilterSummary">调整条件后重新生成随机候选池。</p></summary>
+            <div class="swipe-filter-body">
+              <div class="swipe-filter-grid">
+              <label class="swipe-range-field"><span>起始年份 <output id="swipeStartYearValue">1917年</output></span><input id="swipeStartYear" type="range" min="1917" max="2030" value="1917" step="1" /></label>
+              <label class="swipe-select-field" for="swipeMinVotesPreset">
+                <span>最低评分人数</span>
+                <span class="swipe-votes-controls">
+                  <select id="swipeMinVotesPreset">
+                    <option value="30">30人</option>
+                    <option value="100">100人</option>
+                    <option value="500">500人</option>
+                    <option value="1000">1000人</option>
+                    <option value="custom">自行输入</option>
+                  </select>
+                  <span class="swipe-custom-votes" id="swipeMinVotesCustomField" hidden>
+                    <input id="swipeMinVotesCustom" type="number" min="0" max="1000000" value="30" step="1" inputmode="numeric" aria-label="自定义最低评分人数" />
+                    <span>人</span>
+                  </span>
+                </span>
+              </label>
+              <label class="swipe-range-field"><span>最低评分 <output id="swipeMinScoreValue">不限</output></span><input id="swipeMinScore" type="range" min="0" max="10" value="0" step="0.1" /></label>
+              <label class="swipe-range-field"><span>最高评分 <output id="swipeMaxScoreValue">不限</output></span><input id="swipeMaxScore" type="range" min="0" max="10" value="10" step="0.1" /></label>
+              </div>
+              <fieldset class="swipe-exclusions">
+              <legend>排除类型</legend>
+              <label><input id="swipeExcludeChinese" type="checkbox" /><span>国产动画</span></label>
+              <label><input id="swipeExcludeWeb" type="checkbox" /><span>WEB动画</span></label>
+              <label><input id="swipeExcludeMovie" type="checkbox" /><span>动画电影</span></label>
+              <label><input id="swipeExcludeTheatrical" type="checkbox" /><span>剧场版</span></label>
+              <label><input id="swipeExcludeCompilation" type="checkbox" /><span>总集篇</span></label>
+              <label><input id="swipeExcludeOther" type="checkbox" /><span>其他 / OVA / 短片</span></label>
+              </fieldset>
+              <div class="swipe-filter-actions">
+                <button class="primary-button" id="applySwipeFilters" type="button">重新开始（应用筛选）</button>
+                <button class="text-button" id="resetSwipeFilters" type="button">恢复默认条件</button>
+              </div>
+            </div>
+          </details>
+        </section>
+      </section>
+
+      <section class="view-panel collection-view" id="collectionView" aria-labelledby="collectionTitle" hidden>
+        <div class="catalog-header">
+          <div>
+            <p class="eyebrow">MY ANIME HISTORY</p>
+            <h2 id="collectionTitle">我的动画生涯表</h2>
+          </div>
+          <div class="collection-actions">
+            <button class="secondary-button" id="importButton" type="button">导入记录</button>
+            <button class="primary-button" id="exportButton" type="button">导出备份</button>
+            <button class="text-button danger-text clear-data-button" id="clearCollection" type="button">一键清空</button>
+            <input id="importInput" type="file" accept="application/json,.json" hidden />
+          </div>
+        </div>
+
+        <nav class="collection-section-nav" aria-label="生涯表页内导航">
+          <button type="button" data-collection-section="collectionOverview">记录总览</button>
+          <button type="button" data-collection-section="collectionInsights">生涯总结</button>
+          <button type="button" data-collection-section="collectionGrouping">分类筛选</button>
+          <button type="button" data-collection-section="collectionDisplayBar">作品记录</button>
+        </nav>
+
+        <div class="data-safety-note">
+          <span aria-hidden="true">◉</span>
+          <p><strong>记录只保存在这台设备的当前浏览器</strong><small>更换浏览器或清理网站数据前，建议先导出一份 JSON 备份。</small></p>
+          <button type="button" data-action="quick-backup">立即备份</button>
+        </div>
+
+        <div class="collection-overview" id="collectionOverview"></div>
+
+        <section class="collection-insights" id="collectionInsights" aria-label="我的动画总结"></section>
+
+        <section class="collection-grouping" aria-labelledby="collectionGroupingTitle">
+          <div class="collection-grouping-heading">
+            <div>
+              <p class="eyebrow">GROUP MY HISTORY</p>
+              <h3 id="collectionGroupingTitle">继续按类型与季度查看</h3>
+              <p class="muted-text">季度筛选仅对TV动画生效。</p>
+            </div>
+            <div class="collection-filter-result" aria-live="polite">
+              <span>当前显示 <strong id="collectionFilterCount">0</strong> 部 · <b id="collectionFilterScope">全部记录</b></span>
+              <button class="text-button" id="clearCollectionFilters" type="button">查看全部记录</button>
+            </div>
+          </div>
+          <div class="collection-filter-panel">
+            <div class="filter-group">
+              <span class="filter-label">类型</span>
+              <div class="segmented" id="collectionTypeFilters" aria-label="生涯表动画类型筛选"></div>
+            </div>
+            <div class="tv-season-row collection-season-row" id="collectionSeasonRow" hidden>
+              <span class="filter-label">TV动画季度</span>
+              <div class="segmented" id="collectionSeasonFilters" aria-label="生涯表TV动画季度筛选"></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="collection-display-bar" id="collectionDisplayBar">
+          <div>
+            <p class="eyebrow">DISPLAY MODE</p>
+          </div>
+          <div class="collection-mode-switch" role="group" aria-label="记录展示方式">
+            <button type="button" data-collection-mode="gallery" aria-pressed="true">海报墙</button>
+            <button type="button" data-collection-mode="table" aria-pressed="false">完整表格</button>
+          </div>
+        </div>
+
+        <div class="collection-gallery" id="collectionGallery"></div>
+
+        <div id="collectionTablePanel" hidden>
+          <div class="table-help">
+            <span>横向滑动查看完整分类；点击作品名可前往番组计划查看详情</span>
+          </div>
+          <div class="table-scroller">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th scope="col">时间</th>
+                  <th scope="col">1月番</th>
+                  <th scope="col">4月番</th>
+                  <th scope="col">7月番</th>
+                  <th scope="col">10月番</th>
+                  <th scope="col">WEB动画</th>
+                  <th scope="col">动画电影</th>
+                  <th scope="col">剧场版</th>
+                  <th scope="col">其他</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view-panel theme-view" id="themesView" aria-labelledby="themesTitle" hidden>
+        <div class="catalog-header theme-page-header">
+          <div><p class="eyebrow">MY ANIME PROFILE</p><h2 id="themesTitle">动画生涯个人喜好表</h2></div>
+          <div class="theme-page-actions">
+            <button class="secondary-button" id="openCustomTheme" type="button">＋ 添加主题</button>
+            <button class="primary-button" id="openShareStudio" type="button">生成分享图</button>
+            <button class="secondary-button" id="browseForTheme" type="button">去动画库挑作品</button>
+            <button class="text-button danger-text clear-data-button" id="clearThemes" type="button">一键清空</button>
+          </div>
+        </div>
+
+        <section class="theme-matrix-shell" aria-label="动画人生主题总览">
+          <div class="theme-matrix" id="themeMatrix" role="tablist" aria-label="动画人生主题"></div>
+        </section>
+
+        <section class="theme-workbench" id="themeWorkbench">
+          <header class="theme-workbench-header">
+            <div class="theme-identity"><span id="themeIcon" aria-hidden="true">💌</span><div><p class="eyebrow" id="themeKicker">SHARE THE LOVE</p><h3 id="themeTitle">最想安利</h3><p id="themeDescription"></p></div></div>
+            <div class="theme-settings">
+              <label class="theme-sync-control"><input id="themeCareerSync" type="checkbox" /><span><b>新增时同步生涯表</b><small>移出清单不会删除生涯记录</small></span></label>
+            </div>
+          </header>
+          <div class="theme-search-panel">
+            <label class="search-box" for="themeSearchInput"><span aria-hidden="true">⌕</span><input id="themeSearchInput" type="search" placeholder="直接搜索全部年代的动画并加入当前清单" autocomplete="off" /></label>
+            <p id="themeSearchHelp">搜索结果按评分人数排列，点击右侧按钮即可加入或移出。</p><div class="theme-search-results" id="themeSearchResults" aria-live="polite"></div>
+          </div>
+          <div class="theme-list-heading"><div><p class="eyebrow">CURATED BY YOU</p><h3>这个主题已经选择 <span id="themeItemCount">0</span> 部</h3></div><p id="themeEmptyHint">还没有作品，先从上方搜索或前往资料库挑选。</p></div>
+          <div class="theme-gallery" id="themeGallery"></div>
+        </section>
+      </section>
+
+      <section class="view-panel annual-view" id="annualView" aria-labelledby="annualTitle" hidden>
+        <div class="catalog-header annual-page-header">
+          <div>
+            <p class="eyebrow">ANNUAL TOP TEN</p>
+            <h2 id="annualTitle">我的年度十佳</h2>
+          </div>
+          <div class="annual-page-actions">
+            <label class="annual-year-picker"><span>选择年度</span><select id="annualPageYear"></select></label>
+            <button class="primary-button" id="exportAnnualImage" type="button">生成分享图</button>
+            <button class="text-button danger-text clear-data-button" id="clearAnnualYear" type="button">清空本年</button>
+          </div>
+        </div>
+        <section class="annual-selected-panel" aria-labelledby="annualSelectedTitle">
+          <div class="annual-section-heading">
+            <div><p class="eyebrow">YOUR TOP TEN</p><h3 id="annualSelectedTitle"><span id="annualSelectedYear">2026</span> 年度已选 <b id="annualSelectedCount">0</b> / 10</h3></div>
+            <label><input id="annualCareerSync" type="checkbox" /><span>新增时同步生涯表</span></label>
+          </div>
+          <div class="annual-selected-grid" id="annualSelectedGrid"></div>
+        </section>
+        <section class="annual-catalog-panel" aria-labelledby="annualCatalogTitle">
+          <div class="annual-section-heading">
+            <div><p class="eyebrow">YEAR ARCHIVE</p><h3 id="annualCatalogTitle">本年度全部作品</h3></div>
+            <strong><span id="annualCatalogCount">0</span> 部</strong>
+          </div>
+          <div class="annual-library-filters" aria-label="年度作品筛选">
+            <div class="annual-filter-group">
+              <span class="filter-label">资料库</span>
+              <div class="segmented" id="annualOriginFilters" role="tablist" aria-label="年度十佳资料库">
+                <button type="button" class="segment-button is-active" data-annual-origin="jp" role="tab" aria-selected="true">日番</button>
+                <button type="button" class="segment-button" data-annual-origin="cn" role="tab" aria-selected="false">国产</button>
+              </div>
+            </div>
+            <div class="annual-filter-group">
+              <span class="filter-label">类型</span>
+              <div class="segmented" id="annualTypeFilters" aria-label="年度作品类型"></div>
+            </div>
+            <div class="annual-filter-group annual-season-filter" id="annualSeasonRow">
+              <span class="filter-label">TV动画季度</span>
+              <div class="segmented" id="annualSeasonFilters" aria-label="年度TV动画季度"></div>
+            </div>
+            <label class="sort-select annual-sort-select">
+              <span class="filter-label">排序依据</span>
+              <select id="annualSortSelect">
+                <option value="votes" selected>评分人数</option>
+                <option value="score">bangumi评分</option>
+                <option value="date">上映时间</option>
+                <option value="title">作品名称</option>
+              </select>
+            </label>
+            <label class="sort-select annual-sort-select">
+              <span class="filter-label">顺序</span>
+              <select id="annualSortDirection">
+                <option value="desc" selected>倒序</option>
+                <option value="asc">正序</option>
+              </select>
+            </label>
+          </div>
+          <label class="search-box annual-search" for="annualSearchInput"><span aria-hidden="true">⌕</span><input id="annualSearchInput" type="search" placeholder="在当前年度内搜索作品" autocomplete="off" /></label>
+          <div class="annual-catalog-grid" id="annualCatalogGrid" aria-live="polite"></div>
+          <button class="secondary-button annual-load-more" id="annualLoadMore" type="button" hidden>继续加载更多</button>
+        </section>
+      </section>
+
+    </main>
+
+    <dialog class="entry-dialog confirm-clear-dialog" id="confirmClearDialog" aria-labelledby="confirmClearTitle">
+      <div class="confirm-clear-shell">
+        <div class="dialog-header">
+          <div><p class="eyebrow">PLEASE CONFIRM</p><h2 id="confirmClearTitle">确认清空</h2></div>
+          <button class="icon-button" id="closeConfirmClear" type="button" aria-label="关闭">×</button>
+        </div>
+        <p id="confirmClearMessage"></p>
+        <div class="dialog-actions">
+          <button class="secondary-button" id="cancelClearAction" type="button">取消</button>
+          <button class="primary-button danger-confirm-button" id="confirmClearAction" type="button">确认清空</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="entry-dialog custom-theme-dialog" id="customThemeDialog">
+      <form id="customThemeForm" method="dialog">
+        <div class="dialog-header">
+          <div><p class="eyebrow">CREATE YOUR QUESTION</p><h2>添加一个自定义主题</h2></div>
+          <button class="icon-button" type="button" data-action="close-custom-theme" aria-label="关闭">×</button>
+        </div>
+        <div class="form-grid">
+          <label class="field"><span>图标</span><input name="icon" maxlength="4" placeholder="例如：✨" /></label>
+          <label class="field"><span>主题名称 *</span><input name="title" required maxlength="24" placeholder="例如：最想住进去的世界" /></label>
+          <label class="field field-wide"><span>一句说明</span><input name="description" maxlength="80" placeholder="可选，用一句话说明你的选择标准" /></label>
+        </div>
+        <div class="dialog-actions">
+          <button class="secondary-button" type="button" data-action="close-custom-theme">取消</button>
+          <button class="primary-button" type="submit">添加主题</button>
+        </div>
+      </form>
+    </dialog>
+
+    <aside class="selection-drawer" id="selectionDrawer" aria-labelledby="drawerTitle" aria-hidden="true">
+      <div class="drawer-backdrop" data-action="close-drawer"></div>
+      <div class="drawer-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">QUICK LIST</p>
+            <h2 id="drawerTitle">最近收录</h2>
+          </div>
+          <button class="icon-button" type="button" data-action="close-drawer" aria-label="关闭">×</button>
+        </div>
+        <div class="drawer-list" id="drawerList"></div>
+        <div class="drawer-footer">
+          <button class="primary-button full-button" type="button" data-action="show-collection">
+            查看完整生涯表
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <dialog class="entry-dialog" id="manualDialog">
+      <form id="manualForm" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">MANUAL ENTRY</p>
+            <h2>添加资料库中没有的作品</h2>
+          </div>
+          <button class="icon-button" type="button" data-action="close-manual" aria-label="关闭">×</button>
+        </div>
+        <div class="form-grid">
+          <label class="field field-wide">
+            <span>作品名称 *</span>
+            <input name="title" required maxlength="100" placeholder="例如：星际牛仔" />
+          </label>
+          <label class="field field-wide">
+            <span>原名</span>
+            <input name="originalTitle" maxlength="100" placeholder="可选" />
+          </label>
+          <label class="field">
+            <span>年份 *</span>
+            <select name="year" id="manualYear" required></select>
+          </label>
+          <label class="field">
+            <span>类型 *</span>
+            <select name="type" id="manualType" required>
+              <option value="tv">TV动画</option>
+              <option value="web">WEB动画</option>
+              <option value="movie">动画电影</option>
+              <option value="theatrical">剧场版</option>
+              <option value="other">其他</option>
+            </select>
+          </label>
+          <label class="field" id="manualSeasonField">
+            <span>季度</span>
+            <select name="season" id="manualSeason">
+              <option value="1">1月番</option>
+              <option value="4">4月番</option>
+              <option value="7">7月番</option>
+              <option value="10">10月番</option>
+            </select>
+          </label>
+          <label class="field field-wide">
+            <span>海报地址</span>
+            <input name="poster" type="url" placeholder="https://...（可选）" />
+          </label>
+          <label class="field field-wide">
+            <span>备注</span>
+            <textarea name="note" rows="3" maxlength="300" placeholder="可记录观看版本或其他信息"></textarea>
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button class="secondary-button" type="button" data-action="close-manual">取消</button>
+          <button class="primary-button" type="submit">加入我的生涯表</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="share-dialog" id="shareDialog" aria-labelledby="shareDialogTitle">
+      <div class="share-dialog-shell">
+        <header class="dialog-header share-dialog-header">
+          <div><p class="eyebrow">SHARE YOUR ANIME PROFILE</p><h2 id="shareDialogTitle">把喜好图鉴做成可分享的图片</h2><p>导出的是独立排版，不会把网页按钮或空白区域截进图片。</p></div>
+          <button class="icon-button" id="closeShareDialog" type="button" aria-label="关闭分享图片生成器">×</button>
+        </header>
+        <div class="share-studio">
+          <section class="share-options" aria-label="分享图设置">
+            <fieldset>
+              <legend>图片版式</legend>
+              <label><input type="radio" name="shareTemplate" value="album" checked /><span><b>四页图册</b><small>3:4，每页 5 个主题</small></span></label>
+              <label><input type="radio" name="shareTemplate" value="story" /><span><b>竖版精选</b><small>9:16，适合手机动态</small></span></label>
+              <label><input type="radio" name="shareTemplate" value="long" /><span><b>完整长图</b><small>一次展示全部主题</small></span></label>
+            </fieldset>
+            <fieldset>
+              <legend>显示内容</legend>
+              <label><input id="shareShowEmpty" type="checkbox" checked /><span><b>保留未填写主题</b><small>关闭后只展示已有答案</small></span></label>
+              <label><input id="shareIncludeNotes" type="checkbox" /><span><b>显示私人备注</b><small>默认隐藏，分享前请确认内容</small></span></label>
+            </fieldset>
+            <button class="primary-button full-button" id="generateShareImages" type="button">生成图片预览</button>
+            <p class="share-privacy-note">海报只用于生成分享图；番组计划图片无法直接读取时会经只读图片代理重试，仍失败才使用文字封面。</p>
+          </section>
+          <section class="share-preview-panel" aria-live="polite">
+            <div class="share-preview-heading"><div><h3>图片预览</h3><p id="shareStatus">选择版式后生成，可逐张保存。</p></div><button class="secondary-button" id="downloadShareImages" type="button" disabled>全部下载</button></div>
+            <div class="share-preview-list" id="sharePreviewList"><div class="share-preview-empty"><span>✦</span><p>你的动画答案会在这里变成一组分享卡片</p></div></div>
+          </section>
+        </div>
+      </div>
+    </dialog>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="回到页面顶部">
+      <span aria-hidden="true">↑</span>
+      <strong>顶部</strong>
+    </button>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <div class="theme-quick-menu" id="themeQuickMenu" role="menu" aria-label="加入喜好主题" hidden>
+      <div class="theme-quick-menu-heading"><span>加入喜好主题</span><strong id="themeQuickMenuTitle"></strong></div>
+      <div id="themeQuickMenuItems"></div>
+      <small>再次选择已加入的清单可将其移出</small>
+    </div>
+
+    <footer class="site-footer">
+      <p>动画资料来自番组计划与维基百科；本地记录只保存在你的浏览器中。</p>
+    </footer>
+
+    <script src="data/anime-data.js"></script>
+    <script src="data/anime-cn-data.js"></script>
+    <script src="core.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

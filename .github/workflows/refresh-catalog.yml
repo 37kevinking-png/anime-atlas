@@ -1,0 +1,41 @@
+name: Refresh anime catalog
+
+on:
+  schedule:
+    # Runs on the 1st and 16th, approximately once every 15 days.
+    - cron: "0 0 1,16 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-anime-catalog
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download current Bangumi archive data
+        run: python tools/fetch_bangumi_archive_tv.py --years "1917-$(date +%Y)" --extract-relations
+      - name: Rebuild Japanese and Chinese catalog bundles
+        run: python tools/refresh_static_catalog.py --max-year "$(date +%Y)"
+      - name: Run data regression tests
+        run: python -m unittest tests/test_reclassify_catalog.py
+      - name: Commit updated static data
+        run: |
+          if git diff --quiet -- data; then
+            echo "Catalog is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "data: refresh anime catalog"
+          git push

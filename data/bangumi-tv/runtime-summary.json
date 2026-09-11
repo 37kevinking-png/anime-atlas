@@ -1,0 +1,8 @@
+{
+  "records": 6204,
+  "archive_subjects_found": 6204,
+  "episode_count_present": 6085,
+  "episode_count_missing": 119,
+  "per_episode_runtime_present": 7,
+  "estimation_policy": "When runtime is absent, the website estimates TV viewing time at 24 minutes per episode and labels it as an estimate."
+}
