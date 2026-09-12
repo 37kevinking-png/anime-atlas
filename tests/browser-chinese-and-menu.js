@@ -94,9 +94,17 @@ const { chromium } = require("playwright");
 
   await targetCard.click({ button: "right" });
   assert.equal(await page.locator("#themeQuickMenu").isVisible(), true);
+  assert.equal((await page.locator("#themeQuickMenu button").first().textContent()).trim().startsWith("✓看过"), true);
+  assert.equal(await page.locator("[data-quick-reaction]").count(), 3);
   assert.equal(await page.locator("[data-quick-theme]").count(), 21);
   assert.ok((await page.locator('[data-quick-theme="annual"] small').textContent()).includes("1986"));
   await page.screenshot({ path: "tests/chinese-catalog-preview.png", fullPage: false });
+  await page.locator('[data-quick-reaction="watched"]').click();
+  assert.deepEqual(await page.evaluate(() => {
+    const [item] = JSON.parse(localStorage.getItem("anime-atlas:collection:v1"));
+    return { count: JSON.parse(localStorage.getItem("anime-atlas:collection:v1")).length, reaction: item.reaction };
+  }), { count: 1, reaction: "watched" });
+  await targetCard.click({ button: "right" });
   await page.locator('[data-quick-theme="favorites"]').click();
   assert.equal(await page.evaluate(() => {
     const lists = JSON.parse(localStorage.getItem("anime-atlas:theme-lists:v1"));
@@ -115,6 +123,29 @@ const { chromium } = require("playwright");
   assert.equal(await page.locator(".memory-card").count(), 1);
   await page.locator(".memory-card").click({ button: "right" });
   await page.screenshot({ path: "tests/context-menu-preview.png", fullPage: false });
+  await page.locator('[data-quick-reaction="recommended"]').click();
+  assert.equal(await page.locator(".memory-card .reaction-title--recommended").count(), 1);
+  assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem("anime-atlas:collection:v1"))[0].reaction), "recommended");
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await navigate("collection");
+  assert.equal(await page.locator(".memory-card .reaction-title--recommended").count(), 1);
+  assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem("anime-atlas:theme-lists:v1")).find((list) => list.id === "recommend").records.length), 0);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const overviewLabels = page.locator(".overview-types small");
+  assert.equal(await overviewLabels.count(), 5);
+  assert.equal(await overviewLabels.evaluateAll((labels) => labels.every((label) => label.scrollWidth <= label.clientWidth)), true);
+  await page.locator(".collection-overview").screenshot({ path: "tests/collection-overview-mobile-latest.png" });
+  await page.locator(".memory-card").scrollIntoViewIfNeeded();
+  const memoryCardBox = await page.locator(".memory-card").boundingBox();
+  await page.locator(".memory-card").dispatchEvent("pointerdown", { pointerId: 73, pointerType: "touch", clientX: memoryCardBox.x + 40, clientY: memoryCardBox.y + 40, bubbles: true });
+  await page.waitForTimeout(600);
+  assert.equal(await page.locator("#themeQuickMenu").isVisible(), true);
+  await page.locator('[data-quick-reaction="difficult"]').click();
+  assert.equal(await page.locator(".memory-card .reaction-title--difficult").count(), 1);
+  await page.locator(".memory-card").click({ button: "right" });
+  await page.locator('[data-quick-reaction="recommended"]').click();
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.locator(".memory-card").click({ button: "right" });
   await page.locator('[data-quick-theme="recommend"]').click();
   assert.equal(await page.evaluate(() => {
     const lists = JSON.parse(localStorage.getItem("anime-atlas:theme-lists:v1"));

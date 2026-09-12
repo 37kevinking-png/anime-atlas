@@ -5859,3 +5859,169 @@ body.mobile-nav-open .primary-nav {
     width: min(280px, calc(100vw - 20px));
   }
 }
+
+/* 生涯概览：紧凑展示总数与五类统计，移动端保持单行标签。 */
+.collection-overview {
+  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
+  min-height: 138px;
+  border: 1px solid rgb(23 22 27 / 12%);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #242129, #17161b);
+  box-shadow: 0 14px 34px rgb(35 29 30 / 12%);
+}
+
+.overview-main {
+  position: relative;
+  isolation: isolate;
+  align-items: center;
+  padding: 24px 26px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f4d06c, #e9b64b);
+}
+
+.overview-main::after {
+  position: absolute;
+  z-index: -1;
+  top: -58px;
+  right: -42px;
+  width: 170px;
+  height: 170px;
+  border: 26px solid rgb(255 255 255 / 14%);
+  border-radius: 50%;
+  content: "";
+}
+
+.overview-main span {
+  align-self: end;
+  font-size: 14px;
+  letter-spacing: .08em;
+}
+
+.overview-main small {
+  align-self: start;
+  margin-top: 8px;
+  color: rgb(23 22 27 / 65%);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.overview-main strong {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-size: clamp(56px, 6vw, 76px);
+  font-variant-numeric: tabular-nums;
+}
+
+.overview-types {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  min-height: 0;
+  padding: 12px;
+}
+
+.overview-types span,
+.overview-types span:nth-child(n + 3) {
+  align-content: center;
+  min-width: 0;
+  padding: 14px 8px;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 13px;
+  background: rgb(255 255 255 / 5%);
+}
+
+.overview-types b {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 38px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.overview-types small {
+  display: block;
+  margin-top: 9px;
+  color: #bdb7c1;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.theme-quick-group--reaction {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  padding: 6px 4px 10px;
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
+}
+
+.theme-quick-group--reaction > span {
+  grid-column: 1 / -1;
+}
+
+.theme-quick-group--reaction > button {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 3px;
+  padding: 9px 4px;
+  text-align: center;
+}
+
+.theme-quick-group--reaction > button > i {
+  font-size: 18px;
+}
+
+.theme-quick-group--reaction > button b,
+.theme-quick-group--reaction > button small {
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .collection-overview {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    margin-block: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .overview-main {
+    min-height: 108px;
+    padding: 18px 20px;
+  }
+
+  .overview-main span {
+    font-size: 13px;
+  }
+
+  .overview-main small {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .overview-main strong {
+    font-size: 58px;
+  }
+
+  .overview-types {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+    min-height: 0;
+    padding: 9px;
+  }
+
+  .overview-types span,
+  .overview-types span:nth-child(n + 3) {
+    min-height: 70px;
+    padding: 10px 2px;
+    border-radius: 10px;
+  }
+
+  .overview-types b {
+    font-size: 26px;
+  }
+
+  .overview-types small {
+    margin-top: 7px;
+    font-size: 10px;
+  }
+}

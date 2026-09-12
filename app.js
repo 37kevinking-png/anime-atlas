@@ -466,13 +466,6 @@
       ...lists.filter((list) => !list.annual && !orderedIds.has(list.id)),
       ...lists.filter((list) => list.annual),
     ];
-    const recommended = lists.find((list) => list.id === "recommend");
-    const worst = lists.find((list) => list.id === "worst");
-    selected.forEach((item) => {
-      const target = item.reaction === "recommended" ? recommended : item.reaction === "difficult" ? worst : null;
-      if (target && !target.records.some((record) => record.id === item.id)) target.records.push({ id: item.id, note: "", bucketYear: null, addedAt: item.addedAt });
-      if (target) selected.set(item.id, { ...item, reaction: "watched" });
-    });
     return lists;
   }
 
@@ -1070,10 +1063,24 @@
   function openThemeQuickMenu(id, clientX, clientY) {
     const item = catalogById.get(id) || selected.get(id);
     if (!item) return;
+    const currentReaction = selected.get(id)?.reaction || null;
+    const reactionOptions = [
+      { key: "watched", icon: "✓", label: "看过" },
+      { key: "recommended", icon: "★", label: "推荐" },
+      { key: "difficult", icon: "×", label: "不推荐" },
+    ];
     quickMenuItemId = id;
     elements.themeQuickMenuTitle.textContent = item.title;
     elements.themeQuickMenuItems.innerHTML = `
+      <section class="theme-quick-group theme-quick-group--reaction" aria-label="生涯标记">
+        <span>生涯标记</span>
+        ${reactionOptions.map((option) => `
+          <button type="button" role="menuitemradio" data-quick-reaction="${option.key}" aria-checked="${currentReaction === option.key}">
+            <i>${option.icon}</i><b>${option.label}</b><small>${currentReaction === option.key ? "当前" : option.key === "watched" && !currentReaction ? "加入生涯表" : "标记"}</small>
+          </button>`).join("")}
+      </section>
       <section class="theme-quick-group theme-quick-group--flat">
+        <span>喜好图鉴</span>
         ${themeLists.map((list) => {
           const bucketYear = list.annual ? item.year : state.themeYear;
           const disabled = list.annual && !Number.isInteger(item.year);
@@ -1094,6 +1101,25 @@
     });
   }
 
+  function setCollectionReaction(id, reaction) {
+    const item = selected.get(id) || catalogById.get(id);
+    if (!item || !["watched", "recommended", "difficult"].includes(reaction)) return;
+    const wasSelected = selected.has(id);
+    selected.set(id, {
+      ...item,
+      reaction,
+      addedAt: item.addedAt || new Date().toISOString(),
+    });
+    swipeSkipped.delete(id);
+    saveCollection();
+    saveSwipeSkipped();
+    renderHeaderStats();
+    renderDrawer();
+    if (state.view === "collection") renderCollection();
+    if (state.view === "browse") renderCatalog();
+    showToast(reaction === "recommended" ? "已标记为推荐" : reaction === "difficult" ? "已标记为不推荐" : wasSelected ? "已改为普通看过" : "已加入生涯表", "success", 1500);
+  }
+
   function renderDrawer() {
     const recent = [...selected.values()]
       .sort((a, b) => String(b.addedAt || "").localeCompare(String(a.addedAt || "")))
@@ -1104,7 +1130,7 @@
         <div class="drawer-empty">
           <span aria-hidden="true">＋</span>
           <h3>还没有收录作品</h3>
-          <p>可以先用首页“刷刷刷”快速整理，或在资料库中右键 / 长按作品加入喜好主题。</p>
+          <p>可以先用“刷刷刷”快速整理，或在动画库中右键 / 长按作品标记为看过。</p>
         </div>`;
       return;
     }
@@ -1301,7 +1327,6 @@
     return `<article class="annual-selected-card${best ? " is-best" : ""}" data-annual-record-id="${escapeHtml(item.id)}" tabindex="0" aria-label="${best ? "年度最佳" : `年度十佳第${index + 1}位`}：${escapeHtml(item.title)}；可拖动排序">
       ${best ? `<span class="annual-best-decoration" aria-hidden="true"><i>✦</i><b>♛</b><i>✦</i></span>` : ""}
       <span class="annual-poster${poster ? "" : " has-fallback"}">${poster ? `<img src="${escapeHtml(poster)}" alt="${escapeHtml(item.title)}海报" loading="lazy" referrerpolicy="no-referrer" />` : ""}<b>${escapeHtml(item.title.slice(0, 1) || "番")}</b></span>
-      ${best ? "" : `<div><h4>${titleLink(item, "anime-title-link annual-title-link")}</h4></div>`}
       <button class="annual-selected-remove" type="button" data-annual-toggle="${escapeHtml(item.id)}" aria-label="从${state.themeYear}年度十佳移除${escapeHtml(item.title)}"><span aria-hidden="true">×</span></button>
     </article>`;
   }
@@ -1968,14 +1993,17 @@
     });
     const stats = Core.collectionStats(items);
     const typeSummary = ["tv", "web", "movie", "theatrical", "other"]
-      .map((key) => `<span><b>${stats.types[key]}</b>${TYPE_LABELS[key]}</span>`)
+      .map((key) => `<span><b>${stats.types[key]}</b><small>${TYPE_LABELS[key]}</small></span>`)
       .join("");
+    const collectionRange = stats.earliest
+      ? stats.earliest === stats.latest ? `${stats.earliest}年` : `${stats.earliest}—${stats.latest}`
+      : stats.total ? "记录年份待补" : "等待第一部记录";
 
     elements.collectionOverview.innerHTML = `
       <div class="overview-main">
         <span>已看作品</span>
         <strong>${stats.total}</strong>
-        <small>${stats.earliest ? `${stats.earliest}—${stats.latest}` : stats.total ? "记录年份待补" : "等待第一部记录"}</small>
+        <small>${collectionRange}</small>
       </div>
       <div class="overview-types">${typeSummary}</div>`;
 
@@ -3423,6 +3451,12 @@
     document.addEventListener("pointerup", cancelLongPress, { passive: true });
     document.addEventListener("pointercancel", cancelLongPress, { passive: true });
     elements.themeQuickMenu.addEventListener("click", (event) => {
+      const reactionButton = event.target.closest("[data-quick-reaction]");
+      if (reactionButton && quickMenuItemId) {
+        setCollectionReaction(quickMenuItemId, reactionButton.dataset.quickReaction);
+        closeThemeQuickMenu();
+        return;
+      }
       const button = event.target.closest("[data-quick-theme]");
       if (!button || !quickMenuItemId) return;
       const list = themeLists.find((candidate) => candidate.id === button.dataset.quickTheme);

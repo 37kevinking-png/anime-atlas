@@ -386,7 +386,7 @@ const { chromium } = require("playwright");
   }
   assert.equal(await page.locator("#annualSelectedCount").textContent(), "10");
   assert.equal(await page.locator("#annualSelectedGrid .annual-selected-card.is-best").count(), 1);
-  assert.equal(await page.locator("#annualSelectedGrid .annual-selected-card.is-best h4").count(), 0);
+  assert.equal(await page.locator("#annualSelectedGrid .annual-selected-card h4").count(), 0);
   assert.equal(await page.locator("#annualSelectedGrid .annual-selected-card small").count(), 0);
   const bestPosterBox = await page.locator("#annualSelectedGrid .annual-selected-card.is-best .annual-poster").boundingBox();
   const supplementPosterBox = await page.locator("#annualSelectedGrid .annual-selected-card:not(.is-best) .annual-poster").first().boundingBox();
