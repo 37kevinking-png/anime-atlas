@@ -3808,7 +3808,9 @@
         location.reload();
       });
       try {
-        const registration = await navigator.serviceWorker.register("service-worker.js");
+        const registration = await navigator.serviceWorker.register("service-worker.js?v=45", {
+          updateViaCache: "none",
+        });
         await registration.update();
       } catch (error) {
         console.warn("离线缓存更新失败", error);
