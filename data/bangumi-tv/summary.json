@@ -3,19 +3,19 @@
     1917,
     2026
   ],
-  "tv_in_range": 8508,
-  "quarter_ready": 8508,
-  "manual_review": 637,
+  "tv_in_range": 8549,
+  "quarter_ready": 8549,
+  "manual_review": 632,
   "manual_review_reason_counts": {
-    "missing_year_or_date": 637
+    "missing_year_or_date": 632
   },
-  "non_japanese_excluded": 5092,
-  "country_unknown_admitted": 2234,
+  "non_japanese_excluded": 5120,
+  "country_unknown_admitted": 2242,
   "season_counts": {
     "1": 1348,
-    "10": 1801,
+    "10": 1836,
     "4": 1952,
-    "7": 1277
+    "7": 1278
   },
   "year_counts": {
     "1958": 1,
@@ -67,40 +67,40 @@
     "2005": 135,
     "2006": 193,
     "2007": 173,
-    "2008": 166,
-    "2009": 172,
+    "2008": 167,
+    "2009": 173,
     "2010": 163,
     "2011": 211,
-    "2012": 222,
+    "2012": 221,
     "2013": 270,
     "2014": 315,
-    "2015": 316,
+    "2015": 317,
     "2016": 411,
     "2017": 412,
     "2018": 411,
-    "2019": 388,
-    "2020": 364,
+    "2019": 389,
+    "2020": 365,
     "2021": 417,
-    "2022": 400,
-    "2023": 439,
-    "2024": 409,
+    "2022": 399,
+    "2023": 438,
+    "2024": 408,
     "2025": 403,
-    "2026": 328
+    "2026": 368
   },
   "top_platform_counts": {
-    "1": 9614,
-    "3": 6578,
-    "": 5618,
-    "5": 4678,
-    "2": 4117,
-    "2006": 140
+    "1": 9643,
+    "3": 6579,
+    "": 5660,
+    "5": 4713,
+    "2": 4149,
+    "2006": 145
   },
   "nsfw_included": false,
   "archive": {
-    "name": "dump-2026-08-25.210336Z.subject.jsonlines",
-    "created_at": null,
+    "name": "dump-2026-09-15.210336Z.zip",
+    "created_at": "2026-09-15T21:03:37Z",
     "source": "https://github.com/bangumi/Archive",
-    "subject_file": ".cache\\bangumi-archive\\dump-2026-08-25.210336Z.subject.jsonlines",
-    "relations_file": ".cache\\bangumi-archive\\dump-2026-08-25.210336Z.subject-relations.jsonlines"
+    "subject_file": ".cache/bangumi-archive/dump-2026-09-15.210336Z.subject.jsonlines",
+    "relations_file": ".cache/bangumi-archive/dump-2026-09-15.210336Z.subject-relations.jsonlines"
   }
 }

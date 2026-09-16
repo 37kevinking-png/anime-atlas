@@ -40,6 +40,14 @@
     "source": "https://bgm.tv/subject/586113"
   },
   {
+    "id": "bgm-698626",
+    "title": "8月31日的长夏",
+    "originalTitle": "8月31日のロングサマー",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/698626"
+  },
+  {
     "id": "bgm-568573",
     "title": "99次被处决的炮灰女配今世坚拒「超绝爱模式」",
     "originalTitle": "99回断罪されたループ令嬢ですが今世は「超絶愛されモード」ですって！？",
@@ -62,14 +70,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/579786"
-  },
-  {
-    "id": "bgm-312304",
-    "title": "AWM极限狙击",
-    "originalTitle": "AWM极限狙击",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/312304"
   },
   {
     "id": "bgm-351016",
@@ -209,8 +209,8 @@
   },
   {
     "id": "bgm-505550",
-    "title": "Dark Machine",
-    "originalTitle": "Dark Machine",
+    "title": "Dark Machine The Animation",
+    "originalTitle": "Dark Machine The Animation",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/505550"
@@ -240,6 +240,14 @@
     "source": "https://bgm.tv/subject/369748"
   },
   {
+    "id": "bgm-700581",
+    "title": "EAT-MAN The Over Order",
+    "originalTitle": "EAT-MAN The Over Order",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700581"
+  },
+  {
     "id": "bgm-498559",
     "title": "Electro Andes",
     "originalTitle": "Electro Andes",
@@ -254,14 +262,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/643668"
-  },
-  {
-    "id": "bgm-622288",
-    "title": "FX战士久留美",
-    "originalTitle": "FX戦士くるみちゃん",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/622288"
   },
   {
     "id": "bgm-347191",
@@ -384,20 +384,20 @@
     "source": "https://bgm.tv/subject/534901"
   },
   {
+    "id": "bgm-699727",
+    "title": "IT'S JUST A HOUSE",
+    "originalTitle": "IT'S JUST A HOUSE",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/699727"
+  },
+  {
     "id": "bgm-663625",
     "title": "Joker: Laugh Riot",
     "originalTitle": "Joker: Laugh Riot",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/663625"
-  },
-  {
-    "id": "bgm-617273",
-    "title": "Keroro军曹☆",
-    "originalTitle": "ケロロ軍曹☆",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/617273"
   },
   {
     "id": "bgm-664369",
@@ -520,12 +520,12 @@
     "source": "https://bgm.tv/subject/250241"
   },
   {
-    "id": "bgm-614640",
-    "title": "PSYREN -决战游戏-",
-    "originalTitle": "PSYREN -サイレン-",
+    "id": "bgm-700101",
+    "title": "PANCHSHEELA",
+    "originalTitle": "PANCHSHEELA",
     "releaseDate": "",
     "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/614640"
+    "source": "https://bgm.tv/subject/700101"
   },
   {
     "id": "bgm-89948",
@@ -566,6 +566,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/263001"
+  },
+  {
+    "id": "bgm-700399",
+    "title": "SSS级重生猎人",
+    "originalTitle": "死して生きるSSS級ハンター",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700399"
   },
   {
     "id": "bgm-529188",
@@ -800,6 +808,14 @@
     "source": "https://bgm.tv/subject/611890"
   },
   {
+    "id": "bgm-699982",
+    "title": "おでホロ",
+    "originalTitle": "おでホロ",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/699982"
+  },
+  {
     "id": "bgm-314077",
     "title": "おとぎの国のBirthday",
     "originalTitle": "おとぎの国のBirthday",
@@ -832,6 +848,14 @@
     "source": "https://bgm.tv/subject/695388"
   },
   {
+    "id": "bgm-700036",
+    "title": "きみは四葉のクローバー",
+    "originalTitle": "きみは四葉のクローバー",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700036"
+  },
+  {
     "id": "bgm-620916",
     "title": "こまどり モフモフパレード",
     "originalTitle": "こまどり モフモフパレード",
@@ -862,14 +886,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/588107"
-  },
-  {
-    "id": "bgm-637206",
-    "title": "しろたん",
-    "originalTitle": "しろたん",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/637206"
   },
   {
     "id": "bgm-664276",
@@ -960,6 +976,14 @@
     "source": "https://bgm.tv/subject/665924"
   },
   {
+    "id": "bgm-697962",
+    "title": "ぼくの好きな人が好きな人",
+    "originalTitle": "ぼくの好きな人が好きな人",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697962"
+  },
+  {
     "id": "bgm-313658",
     "title": "まっくら森の歌",
     "originalTitle": "まっくら森の歌",
@@ -1000,14 +1024,6 @@
     "source": "https://bgm.tv/subject/581876"
   },
   {
-    "id": "bgm-688204",
-    "title": "ゆうさんち！from 遊ハち",
-    "originalTitle": "ゆうさんち！from 遊ハち",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/688204"
-  },
-  {
     "id": "bgm-672301",
     "title": "ゆらゆらQ",
     "originalTitle": "ゆらゆらQ",
@@ -1038,6 +1054,22 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/258759"
+  },
+  {
+    "id": "bgm-700725",
+    "title": "エキストラに男主人公たちを奪われた",
+    "originalTitle": "エキストラに男主人公たちを奪われた",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700725"
+  },
+  {
+    "id": "bgm-699329",
+    "title": "カラダにイイ男",
+    "originalTitle": "カラダにイイ男",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/699329"
   },
   {
     "id": "bgm-683269",
@@ -1096,20 +1128,20 @@
     "source": "https://bgm.tv/subject/314003"
   },
   {
+    "id": "bgm-700722",
+    "title": "シークレットレディ",
+    "originalTitle": "シークレットレディ",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700722"
+  },
+  {
     "id": "bgm-524989",
     "title": "ディズニー ツイステッドワンダーランド ザ アニメーション シーズン エピソード オブ オクタヴィネル",
     "originalTitle": "ディズニー ツイステッドワンダーランド ザ アニメーション シーズン エピソード オブ オクタヴィネル",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/524989"
-  },
-  {
-    "id": "bgm-524988",
-    "title": "ディズニー ツイステッドワンダーランド ザ アニメーション ～エピソード オブ サバナクロー～",
-    "originalTitle": "ディズニー ツイステッドワンダーランド ザ アニメーション ～エピソード オブ サバナクロー～",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/524988"
   },
   {
     "id": "bgm-515086",
@@ -1136,6 +1168,14 @@
     "source": "https://bgm.tv/subject/690279"
   },
   {
+    "id": "bgm-701566",
+    "title": "ハルとゲン　～70歳、はじめての子育て～",
+    "originalTitle": "ハルとゲン　～70歳、はじめての子育て～",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/701566"
+  },
+  {
     "id": "bgm-311054",
     "title": "パンツぱんくろう",
     "originalTitle": "パンツぱんくろう",
@@ -1158,6 +1198,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/313708"
+  },
+  {
+    "id": "bgm-697602",
+    "title": "ペロペロ★スパ〜クルズ",
+    "originalTitle": "ペロペロ★スパ〜クルズ",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697602"
   },
   {
     "id": "bgm-641698",
@@ -1208,6 +1256,14 @@
     "source": "https://bgm.tv/subject/197429"
   },
   {
+    "id": "bgm-697805",
+    "title": "レディベイビー",
+    "originalTitle": "レディベイビー",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697805"
+  },
+  {
     "id": "bgm-663205",
     "title": "レベルロボチカ",
     "originalTitle": "レベルロボチカ",
@@ -1240,28 +1296,12 @@
     "source": "https://bgm.tv/subject/618527"
   },
   {
-    "id": "bgm-536270",
-    "title": "一觉醒来坐拥神装和飞船，我决定以买一套独门独户的房子为目标作为佣兵自由地活下去",
-    "originalTitle": "目覚めたら最強装備と宇宙船持ちだったので 、一戸建て目指して傭兵として自由に生きたい",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/536270"
-  },
-  {
     "id": "bgm-403737",
     "title": "万古邪帝",
     "originalTitle": "万古邪帝",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/403737"
-  },
-  {
-    "id": "bgm-656083",
-    "title": "不擅交际的未亡人雪女与诅咒戒指",
-    "originalTitle": "人付き合いが苦手な未亡人の雪女さんと呪いの指輪",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/656083"
   },
   {
     "id": "bgm-513725",
@@ -1520,22 +1560,6 @@
     "source": "https://bgm.tv/subject/17778"
   },
   {
-    "id": "bgm-486456",
-    "title": "佐佐木与文鸟小哔 第二季",
-    "originalTitle": "佐々木とピーちゃん 第2期",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/486456"
-  },
-  {
-    "id": "bgm-624923",
-    "title": "你好、我是受心上人所托来做恋爱药的魔女。",
-    "originalTitle": "どうも、好きな人に惚れ薬を依頼された魔女です。",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/624923"
-  },
-  {
     "id": "bgm-667062",
     "title": "你愿意发誓推我上C位吗？",
     "originalTitle": "私をセンターにすると誓いますか？",
@@ -1558,14 +1582,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/653624"
-  },
-  {
-    "id": "bgm-393010",
-    "title": "侦探已经死了。 第二季",
-    "originalTitle": "探偵はもう、死んでいる。 Season 2",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/393010"
   },
   {
     "id": "bgm-503265",
@@ -1592,20 +1608,20 @@
     "source": "https://bgm.tv/subject/460682"
   },
   {
+    "id": "bgm-697807",
+    "title": "偶然助けただけなので、責任は取りません",
+    "originalTitle": "偶然助けただけなので、責任は取りません",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697807"
+  },
+  {
     "id": "bgm-668211",
     "title": "傷口と包帯",
     "originalTitle": "傷口と包帯",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/668211"
-  },
-  {
-    "id": "bgm-586255",
-    "title": "僵尸搜寻中",
-    "originalTitle": "#ゾンビさがしてます",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/586255"
   },
   {
     "id": "bgm-460687",
@@ -1672,6 +1688,14 @@
     "source": "https://bgm.tv/subject/537727"
   },
   {
+    "id": "bgm-697808",
+    "title": "公爵家に棲む狂犬",
+    "originalTitle": "公爵家に棲む狂犬",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697808"
+  },
+  {
     "id": "bgm-616596",
     "title": "关于我转生变成史莱姆这档事 第四季 第2部分",
     "originalTitle": "転生したらスライムだった件 第4期 第2クール",
@@ -1696,20 +1720,20 @@
     "source": "https://bgm.tv/subject/616598"
   },
   {
-    "id": "bgm-657778",
-    "title": "兽王武神DANDIVINE",
-    "originalTitle": "獣王武神ダンデヴァイン",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/657778"
-  },
-  {
     "id": "bgm-187601",
     "title": "内向害羞的小优君",
     "originalTitle": "内気はずかしゆう君ちゃん",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/187601"
+  },
+  {
+    "id": "bgm-699064",
+    "title": "再一次的青春",
+    "originalTitle": "アオハル・ワンスモア",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/699064"
   },
   {
     "id": "bgm-661573",
@@ -1742,6 +1766,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/663905"
+  },
+  {
+    "id": "bgm-698542",
+    "title": "刃牙外传 烈海王对于转生异世界一向是无所谓的",
+    "originalTitle": "バキ外伝 烈海王は異世界転生しても一向にかまわんッッ",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/698542"
   },
   {
     "id": "bgm-638190",
@@ -1920,14 +1952,6 @@
     "source": "https://bgm.tv/subject/643934"
   },
   {
-    "id": "bgm-618199",
-    "title": "名探偵コナン 30号殺人事件",
-    "originalTitle": "名探偵コナン 30号殺人事件",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/618199"
-  },
-  {
     "id": "bgm-385454",
     "title": "吴狄的足球",
     "originalTitle": "吴狄的足球",
@@ -1942,14 +1966,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/670337"
-  },
-  {
-    "id": "bgm-621073",
-    "title": "和没有信徒的女神大人一起攻略异世界",
-    "originalTitle": "信者ゼロの女神サマと始める異世界攻略",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/621073"
   },
   {
     "id": "bgm-616668",
@@ -2200,14 +2216,6 @@
     "source": "https://bgm.tv/subject/33398"
   },
   {
-    "id": "bgm-664389",
-    "title": "夜桜さんちの大作戦 第2期 第2クール",
-    "originalTitle": "夜桜さんちの大作戦 第2期 第2クール",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/664389"
-  },
-  {
     "id": "bgm-608348",
     "title": "大怪兽伽奇玛",
     "originalTitle": "大怪獣ゲァーチマ",
@@ -2230,6 +2238,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/358646"
+  },
+  {
+    "id": "bgm-700727",
+    "title": "天下第一人の幼馴染",
+    "originalTitle": "天下第一人の幼馴染",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700727"
   },
   {
     "id": "bgm-551668",
@@ -2264,20 +2280,20 @@
     "source": "https://bgm.tv/subject/583742"
   },
   {
+    "id": "bgm-698901",
+    "title": "奇招百出的维多利亚 第二季",
+    "originalTitle": "手札が多めのビクトリア 第2期",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/698901"
+  },
+  {
     "id": "bgm-139824",
     "title": "奋斗吧松鼠小贱",
     "originalTitle": "奋斗吧！松鼠小贱",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/139824"
-  },
-  {
-    "id": "bgm-647220",
-    "title": "女友的朋友",
-    "originalTitle": "彼女の友達",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/647220"
   },
   {
     "id": "bgm-123219",
@@ -2376,6 +2392,14 @@
     "source": "https://bgm.tv/subject/320444"
   },
   {
+    "id": "bgm-572743",
+    "title": "宝可梦故事集 荒诞历险记 葱游兵与皮丘",
+    "originalTitle": "ポケモンテイルズ ネギカナイトとピチューの冒険",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/572743"
+  },
+  {
     "id": "bgm-253884",
     "title": "容易的生活",
     "originalTitle": "The Easy Life",
@@ -2430,6 +2454,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/147604"
+  },
+  {
+    "id": "bgm-701459",
+    "title": "小破孩之禁毒系列",
+    "originalTitle": "小破孩之禁毒系列",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/701459"
   },
   {
     "id": "bgm-694505",
@@ -2640,30 +2672,6 @@
     "source": "https://bgm.tv/subject/683227"
   },
   {
-    "id": "bgm-596771",
-    "title": "弱气MAX的大小姐、居然接受了铁腕未婚夫的赌约",
-    "originalTitle": "弱気MAX令嬢なのに、辣腕婚約者様の賭けに乗ってしまった",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/596771"
-  },
-  {
-    "id": "bgm-584847",
-    "title": "弹珠汽水瓶里的千岁同学 第2部分",
-    "originalTitle": "千歳くんはラムネ瓶のなか 第2クール",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/584847"
-  },
-  {
-    "id": "bgm-471844",
-    "title": "归还者的魔法要特别 第二季",
-    "originalTitle": "帰還者の魔法は特別です 第2期",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/471844"
-  },
-  {
     "id": "bgm-141164",
     "title": "影斗",
     "originalTitle": "影斗",
@@ -2680,6 +2688,14 @@
     "source": "https://bgm.tv/subject/494022"
   },
   {
+    "id": "bgm-697809",
+    "title": "忘れられた野原",
+    "originalTitle": "忘れられた野原",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697809"
+  },
+  {
     "id": "bgm-312024",
     "title": "思い出のアルバム",
     "originalTitle": "思い出のアルバム",
@@ -2694,6 +2710,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/616693"
+  },
+  {
+    "id": "bgm-700726",
+    "title": "怪物公爵と契約公女",
+    "originalTitle": "怪物公爵と契約公女",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700726"
   },
   {
     "id": "bgm-588427",
@@ -2768,6 +2792,14 @@
     "source": "https://bgm.tv/subject/625669"
   },
   {
+    "id": "bgm-700724",
+    "title": "悪党のお父様、私と結婚してください♡",
+    "originalTitle": "悪党のお父様、私と結婚してください♡",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700724"
+  },
+  {
     "id": "bgm-668358",
     "title": "悪夢の淵から",
     "originalTitle": "悪夢の淵から",
@@ -2776,12 +2808,12 @@
     "source": "https://bgm.tv/subject/668358"
   },
   {
-    "id": "bgm-694041",
-    "title": "意地悪な姑をやめたら、みんな私に執着します",
-    "originalTitle": "意地悪な姑をやめたら、みんな私に執着します",
+    "id": "bgm-700723",
+    "title": "悪女が剣を持った理由",
+    "originalTitle": "悪女が剣を持った理由",
     "releaseDate": "",
     "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/694041"
+    "source": "https://bgm.tv/subject/700723"
   },
   {
     "id": "bgm-545967",
@@ -2822,14 +2854,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/547036"
-  },
-  {
-    "id": "bgm-551304",
-    "title": "我的幸福婚姻 特别篇",
-    "originalTitle": "わたしの幸せな結婚 特別篇",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/551304"
   },
   {
     "id": "bgm-448622",
@@ -2968,28 +2992,20 @@
     "source": "https://bgm.tv/subject/448399"
   },
   {
+    "id": "bgm-616671",
+    "title": "新乌龙派出所",
+    "originalTitle": "新こちら葛飾区亀有公園前派出所",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/616671"
+  },
+  {
     "id": "bgm-191225",
     "title": "新倩女幽魂",
     "originalTitle": "新倩女幽魂",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/191225"
-  },
-  {
-    "id": "bgm-590003",
-    "title": "新宿シンちゃん　よいこの交通安全",
-    "originalTitle": "新宿シンちゃん　よいこの交通安全",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/590003"
-  },
-  {
-    "id": "bgm-590016",
-    "title": "新宿シンちゃんパトロール わるい大人に気をつけて",
-    "originalTitle": "新宿シンちゃんパトロール わるい大人に気をつけて",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/590016"
   },
   {
     "id": "bgm-280594",
@@ -3056,6 +3072,14 @@
     "source": "https://bgm.tv/subject/609634"
   },
   {
+    "id": "bgm-699060",
+    "title": "日本三国 续篇",
+    "originalTitle": "日本三國 続編",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/699060"
+  },
+  {
     "id": "bgm-325113",
     "title": "明日之歌",
     "originalTitle": "トゥモロウズ ソング",
@@ -3110,6 +3134,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/616413"
+  },
+  {
+    "id": "bgm-700965",
+    "title": "暗黑破坏神",
+    "originalTitle": "Diablo",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/700965"
   },
   {
     "id": "bgm-645237",
@@ -3184,14 +3216,6 @@
     "source": "https://bgm.tv/subject/214130"
   },
   {
-    "id": "bgm-568525",
-    "title": "朱色的面具",
-    "originalTitle": "朱色の仮面",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/568525"
-  },
-  {
     "id": "bgm-637949",
     "title": "朱色的面具 第2部分",
     "originalTitle": "朱色の仮面 第2クール",
@@ -3214,14 +3238,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/639020"
-  },
-  {
-    "id": "bgm-589775",
-    "title": "杀手旅店 第二季",
-    "originalTitle": "ホテル・インヒューマンズ 第2期",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/589775"
   },
   {
     "id": "bgm-636493",
@@ -3342,6 +3358,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/344626"
+  },
+  {
+    "id": "bgm-677709",
+    "title": "機動戦士ガンダムRG XARX-ZERO",
+    "originalTitle": "機動戦士ガンダムRG XARX-ZERO",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/677709"
   },
   {
     "id": "bgm-576533",
@@ -3584,6 +3608,14 @@
     "source": "https://bgm.tv/subject/497541"
   },
   {
+    "id": "bgm-697810",
+    "title": "演技初心者は天才俳優",
+    "originalTitle": "演技初心者は天才俳優",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697810"
+  },
+  {
     "id": "bgm-423623",
     "title": "火影忍者 20周年纪念完全新作",
     "originalTitle": "NARUTO-ナルト- 20周年記念完全新作",
@@ -3776,6 +3808,14 @@
     "source": "https://bgm.tv/subject/677162"
   },
   {
+    "id": "bgm-697806",
+    "title": "真実が見える赤ちゃん皇女様",
+    "originalTitle": "真実が見える赤ちゃん皇女様",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/697806"
+  },
+  {
     "id": "bgm-589104",
     "title": "真･武士传 剑勇传说 第二季",
     "originalTitle": "真･侍伝 YAIBA 第2期",
@@ -3928,6 +3968,14 @@
     "source": "https://bgm.tv/subject/632427"
   },
   {
+    "id": "bgm-701382",
+    "title": "紛争でしたら八田まで",
+    "originalTitle": "紛争でしたら八田まで",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/701382"
+  },
+  {
     "id": "bgm-665107",
     "title": "索亚菈与魔物之家",
     "originalTitle": "ソアラと魔物の家",
@@ -4014,14 +4062,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/584910"
-  },
-  {
-    "id": "bgm-511936",
-    "title": "罗梅莉亚战记",
-    "originalTitle": "ロメリア戦記",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/511936"
   },
   {
     "id": "bgm-191337",
@@ -4232,14 +4272,6 @@
     "source": "https://bgm.tv/subject/637972"
   },
   {
-    "id": "bgm-625799",
-    "title": "被流放的开挂魔术师讴歌随心所欲第二人生",
-    "originalTitle": "追放されたチート付与魔術師は気ままなセカンドライフを謳歌する。",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/625799"
-  },
-  {
     "id": "bgm-332466",
     "title": "裤袜视界 Another",
     "originalTitle": "みるタイツ・アナザー",
@@ -4416,14 +4448,6 @@
     "source": "https://bgm.tv/subject/627283"
   },
   {
-    "id": "bgm-542007",
-    "title": "转生了的大圣女，拼死隐瞒自己身为圣女",
-    "originalTitle": "転生した大聖女は、聖女であることをひた隠す",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/542007"
-  },
-  {
     "id": "bgm-631467",
     "title": "转生成了即将进入坏结局的女主角，这辈子想要好好恋爱骗子哥哥却不愿对我放手？",
     "originalTitle": "バッドエンド目前のヒロインに転生した私、今世では恋愛するつもりがチートな兄が離してくれません⁉︎",
@@ -4432,28 +4456,12 @@
     "source": "https://bgm.tv/subject/631467"
   },
   {
-    "id": "bgm-634587",
-    "title": "转生成哥布林但有疑问吗？",
-    "originalTitle": "転生ゴブリンだけど質問ある？",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/634587"
-  },
-  {
     "id": "bgm-609035",
     "title": "转生精灵精通魔法后踏上旅程，因为长寿而成为活生生的传说",
     "originalTitle": "魔術を極めて旅に出た転生エルフ、持て余した寿命で生ける伝説となる",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/609035"
-  },
-  {
-    "id": "bgm-530104",
-    "title": "转生贵族凭鉴定技能扭转人生 第三季",
-    "originalTitle": "転生貴族、鑑定スキルで成り上がる 第3期",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/530104"
   },
   {
     "id": "bgm-93650",
@@ -4502,6 +4510,14 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/662395"
+  },
+  {
+    "id": "bgm-524988",
+    "title": "迪士尼 扭曲仙境 EPISODE of SAVANACLAW",
+    "originalTitle": "ディズニー ツイステッドワンダーランド ザ アニメーション ～エピソード オブ サバナクロー～",
+    "releaseDate": "",
+    "reason": "missing_year_or_date",
+    "source": "https://bgm.tv/subject/524988"
   },
   {
     "id": "bgm-499073",
@@ -4608,14 +4624,6 @@
     "source": "https://bgm.tv/subject/81500"
   },
   {
-    "id": "bgm-616808",
-    "title": "野生的大魔王出现了！第二季",
-    "originalTitle": "野生のラスボスが現れた！第2期",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/616808"
-  },
-  {
     "id": "bgm-267988",
     "title": "野良和皇女和流浪猫之心 次期",
     "originalTitle": "ノラと皇女と野良猫ハート 次期",
@@ -4646,14 +4654,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/575996"
-  },
-  {
-    "id": "bgm-664395",
-    "title": "钻石王牌 act2 第二季 第2部分",
-    "originalTitle": "ダイヤのA actⅡ Second Season 第2クール",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/664395"
   },
   {
     "id": "bgm-226541",
@@ -4888,28 +4888,12 @@
     "source": "https://bgm.tv/subject/665209"
   },
   {
-    "id": "bgm-456078",
-    "title": "魔法★探险家",
-    "originalTitle": "マジカル★エクスプローラー",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/456078"
-  },
-  {
     "id": "bgm-630996",
     "title": "魔法使萝世的佐渡求生记",
     "originalTitle": "魔法使いロゼの佐渡ライフ",
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/630996"
-  },
-  {
-    "id": "bgm-634210",
-    "title": "魔法姐妹露露特莉莉 第2部分",
-    "originalTitle": "魔法の姉妹ルルットリリィ 第2クール",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/634210"
   },
   {
     "id": "bgm-526372",
@@ -5016,14 +5000,6 @@
     "source": "https://bgm.tv/subject/625948"
   },
   {
-    "id": "bgm-630160",
-    "title": "黑暗召唤师在地下恋爱中",
-    "originalTitle": "ダークサモナーとデキている",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/630160"
-  },
-  {
     "id": "bgm-665014",
     "title": "黑暗学院 第二季",
     "originalTitle": "Le Collège Noir Season 2",
@@ -5048,14 +5024,6 @@
     "source": "https://bgm.tv/subject/409554"
   },
   {
-    "id": "bgm-567896",
-    "title": "黑色五叶草 第二季",
-    "originalTitle": "ブラッククローバー 2nd Season",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/567896"
-  },
-  {
     "id": "bgm-34135",
     "title": "黛子小姐",
     "originalTitle": "黛子小姐",
@@ -5078,14 +5046,6 @@
     "releaseDate": "",
     "reason": "missing_year_or_date",
     "source": "https://bgm.tv/subject/444276"
-  },
-  {
-    "id": "bgm-623249",
-    "title": "龙珠超 比鲁斯",
-    "originalTitle": "ドラゴンボール超 ビルス",
-    "releaseDate": "",
-    "reason": "missing_year_or_date",
-    "source": "https://bgm.tv/subject/623249"
   },
   {
     "id": "bgm-623233",
