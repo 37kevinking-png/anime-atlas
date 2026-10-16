@@ -1,34 +1,34 @@
 {
-  "input_records": 13188,
-  "records": 12769,
+  "input_records": 13196,
+  "records": 12779,
   "type_counts": {
-    "movie": 438,
+    "movie": 434,
     "other": 2488,
-    "theatrical": 1661,
-    "tv": 6386,
-    "web": 1796
+    "theatrical": 1666,
+    "tv": 6394,
+    "web": 1797
   },
   "classification_reason_counts": {
     "disc_bonus": 1,
-    "ova": 2236,
-    "standalone_movie": 91,
-    "summary": 212,
-    "tag_franchise_theatrical": 83,
-    "tag_movie": 67,
-    "tag_original_movie": 280,
-    "tag_theatrical": 1553,
-    "tag_tv": 6240,
-    "tv": 146,
+    "ova": 2233,
+    "standalone_movie": 89,
+    "summary": 215,
+    "tag_franchise_theatrical": 85,
+    "tag_movie": 66,
+    "tag_original_movie": 279,
+    "tag_theatrical": 1556,
+    "tag_tv": 6245,
+    "tv": 149,
     "tv_franchise": 19,
     "tv_title_basis": 6,
     "venue_special": 39,
-    "web": 1796
+    "web": 1797
   },
   "score_vote_threshold": 30,
   "ranking_vote_threshold": 100,
-  "scores_visible": 7588,
-  "scores_hidden_for_small_sample": 5181,
+  "scores_visible": 7643,
+  "scores_hidden_for_small_sample": 5136,
   "manual_classification_review": 0,
-  "automatic_classification_fallbacks": 23,
-  "explicit_foreign_country_exclusions": 419
+  "automatic_classification_fallbacks": 22,
+  "explicit_foreign_country_exclusions": 417
 }

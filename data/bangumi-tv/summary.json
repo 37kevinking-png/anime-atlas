@@ -3,19 +3,19 @@
     1917,
     2026
   ],
-  "tv_in_range": 8570,
-  "quarter_ready": 8570,
-  "manual_review": 646,
+  "tv_in_range": 8578,
+  "quarter_ready": 8578,
+  "manual_review": 661,
   "manual_review_reason_counts": {
-    "missing_year_or_date": 646
+    "missing_year_or_date": 661
   },
-  "non_japanese_excluded": 5129,
-  "country_unknown_admitted": 2248,
+  "non_japanese_excluded": 5212,
+  "country_unknown_admitted": 2260,
   "season_counts": {
-    "1": 1349,
-    "10": 1847,
-    "4": 1954,
-    "7": 1280
+    "1": 1350,
+    "10": 1852,
+    "4": 1955,
+    "7": 1282
   },
   "year_counts": {
     "1958": 1,
@@ -31,7 +31,7 @@
     "1969": 21,
     "1970": 18,
     "1971": 18,
-    "1972": 17,
+    "1972": 18,
     "1973": 17,
     "1974": 21,
     "1975": 21,
@@ -39,7 +39,7 @@
     "1977": 29,
     "1978": 25,
     "1979": 38,
-    "1980": 42,
+    "1980": 43,
     "1981": 46,
     "1982": 44,
     "1983": 44,
@@ -58,7 +58,7 @@
     "1996": 50,
     "1997": 52,
     "1998": 85,
-    "1999": 96,
+    "1999": 97,
     "2000": 77,
     "2001": 109,
     "2002": 101,
@@ -77,30 +77,30 @@
     "2015": 317,
     "2016": 411,
     "2017": 414,
-    "2018": 412,
-    "2019": 389,
-    "2020": 365,
-    "2021": 417,
+    "2018": 413,
+    "2019": 386,
+    "2020": 364,
+    "2021": 416,
     "2022": 399,
     "2023": 438,
-    "2024": 408,
-    "2025": 403,
-    "2026": 385
+    "2024": 409,
+    "2025": 406,
+    "2026": 390
   },
   "top_platform_counts": {
-    "1": 9672,
-    "3": 6571,
-    "": 5672,
-    "5": 4729,
-    "2": 4169,
-    "2006": 150
+    "1": 9757,
+    "3": 6574,
+    "": 5721,
+    "5": 4754,
+    "2": 4209,
+    "2006": 159
   },
   "nsfw_included": false,
   "archive": {
-    "name": "dump-2026-09-29.210336Z.zip",
-    "created_at": "2026-09-29T21:03:37Z",
+    "name": "dump-2026-10-13.210353Z.zip",
+    "created_at": "2026-10-13T21:03:54Z",
     "source": "https://github.com/bangumi/Archive",
-    "subject_file": ".cache/bangumi-archive/dump-2026-09-29.210336Z.subject.jsonlines",
-    "relations_file": ".cache/bangumi-archive/dump-2026-09-29.210336Z.subject-relations.jsonlines"
+    "subject_file": ".cache/bangumi-archive/dump-2026-10-13.210353Z.subject.jsonlines",
+    "relations_file": ".cache/bangumi-archive/dump-2026-10-13.210353Z.subject-relations.jsonlines"
   }
 }
