@@ -3,17 +3,17 @@
     1917,
     2026
   ],
-  "tv_in_range": 8578,
-  "quarter_ready": 8578,
-  "manual_review": 661,
+  "tv_in_range": 8585,
+  "quarter_ready": 8585,
+  "manual_review": 679,
   "manual_review_reason_counts": {
-    "missing_year_or_date": 661
+    "missing_year_or_date": 679
   },
-  "non_japanese_excluded": 5212,
-  "country_unknown_admitted": 2260,
+  "non_japanese_excluded": 5260,
+  "country_unknown_admitted": 2257,
   "season_counts": {
-    "1": 1350,
-    "10": 1852,
+    "1": 1351,
+    "10": 1853,
     "4": 1955,
     "7": 1282
   },
@@ -69,38 +69,38 @@
     "2007": 173,
     "2008": 167,
     "2009": 173,
-    "2010": 163,
-    "2011": 211,
-    "2012": 221,
-    "2013": 270,
+    "2010": 164,
+    "2011": 212,
+    "2012": 220,
+    "2013": 269,
     "2014": 315,
     "2015": 317,
     "2016": 411,
     "2017": 414,
-    "2018": 413,
+    "2018": 412,
     "2019": 386,
     "2020": 364,
-    "2021": 416,
-    "2022": 399,
+    "2021": 418,
+    "2022": 400,
     "2023": 438,
     "2024": 409,
-    "2025": 406,
-    "2026": 390
+    "2025": 403,
+    "2026": 398
   },
   "top_platform_counts": {
-    "1": 9757,
-    "3": 6574,
-    "": 5721,
-    "5": 4754,
-    "2": 4209,
-    "2006": 159
+    "1": 9778,
+    "3": 6584,
+    "": 5719,
+    "5": 4811,
+    "2": 4219,
+    "2006": 147
   },
   "nsfw_included": false,
   "archive": {
-    "name": "dump-2026-10-13.210353Z.zip",
-    "created_at": "2026-10-13T21:03:54Z",
+    "name": "dump-2026-10-27.210404Z.zip",
+    "created_at": "2026-10-27T21:04:05Z",
     "source": "https://github.com/bangumi/Archive",
-    "subject_file": ".cache/bangumi-archive/dump-2026-10-13.210353Z.subject.jsonlines",
-    "relations_file": ".cache/bangumi-archive/dump-2026-10-13.210353Z.subject-relations.jsonlines"
+    "subject_file": ".cache/bangumi-archive/dump-2026-10-27.210404Z.subject.jsonlines",
+    "relations_file": ".cache/bangumi-archive/dump-2026-10-27.210404Z.subject-relations.jsonlines"
   }
 }
